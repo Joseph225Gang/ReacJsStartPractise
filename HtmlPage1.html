@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="script/react.min.js"></script>
+    <script src="script/react-dom.min.js"></script>
+    <script src="script/browser.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        var Bacon = React.createClass({
+            render: function(){
+                return (
+                    <div>
+                        <h2>This is a simple component</h2>
+                        <p>{this.props.title}</p>
+                    </div>)
+            }
+        });
+
+        var Comment = React.createClass({
+            
+            edit:function(){
+              alert("edit component");
+            },
+            render:function(){
+                return(
+                    <div>
+                        <button onClick={this.edit}>Edit</button>
+                    </div>
+                )
+            }
+        });
+
+        var TwoState = React.createClass({
+        getInitialState:function()
+        {
+        return {editing:false};
+        },
+        edit:function()
+        {
+        this.setState({editing:true});
+        },
+        save:function()
+        {
+        this.setState({editing:false});
+        },
+        renderEnglish:function()
+        {
+          return (<div>
+                      <button onClick={this.save}>Hi</button>
+                  </div>)
+        },
+        renderMandarin:function()
+        {
+        return (
+            <div>
+                <button onClick={this.edit}>哈囉</button>
+            </div>)
+        },
+        render:function()
+        {
+            if(this.state.editing)
+                return this.renderEnglish();
+            else
+                return this.renderMandarin();
+        }
+        });
+
+        var CheckBox = React.createClass({
+            getInitialState:function()
+            {
+                return {checked:true};
+            },
+            handleChecked:function()
+            {
+                this.setState({checked:!this.state.checked})
+            },
+            render:function()
+            {
+                var msg;
+                if(this.state.checked)
+                    msg = 'checked';
+                else
+                    msg = 'unchecked';
+                return(<div><input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked}/>
+                            <h3>Checkbox is {msg}</h3>
+                        </div>
+                        );
+            }
+        });
+        var RefClass = React.createClass({
+        save:function(){
+            console.log(this.refs.newText.value);
+        },
+        render:function()
+        {
+        return(
+        <div>
+            <textarea ref="newText" defaultvalue={"hello"}></textarea>
+            <button onClick={this.save}>哈囉</button>
+        </div>
+        );
+        }
+        });
+
+        var Board = React.createClass({
+            getInitialState: function(){
+                return{
+                    comments:[
+                            'pizza',
+                            'ice cream'
+        ]
+        }
+        },
+        render:function()
+        {
+            return(
+                    <div>
+                        {
+                            this.state.comments.map(function(text,i){
+                                return (<Bacon title={text}/>)
+                        })
+                        }
+                    </div>
+            );
+        }
+        });
+        ReactDOM.render(<div>
+                           <Bacon title="chese"/>
+                           <Bacon title="bacon"/>
+                           <Bacon title="banana"/>
+                           <CheckBox />
+                           <Comment/>
+                           <TwoState/>
+                           <RefClass/>
+                           <Board/>
+                         </div>,document.getElementById('example'));
+    </script>
+</body>
+</html>

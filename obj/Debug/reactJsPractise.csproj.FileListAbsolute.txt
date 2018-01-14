@@ -1,0 +1,6 @@
+D:\c sharp\Visual Studio 2015\reactJsPractise\bin\reactJsPractise.dll.config
+D:\c sharp\Visual Studio 2015\reactJsPractise\bin\reactJsPractise.dll
+D:\c sharp\Visual Studio 2015\reactJsPractise\bin\reactJsPractise.pdb
+D:\c sharp\Visual Studio 2015\reactJsPractise\obj\Debug\reactJsPractise.csprojResolveAssemblyReference.cache
+D:\c sharp\Visual Studio 2015\reactJsPractise\obj\Debug\reactJsPractise.dll
+D:\c sharp\Visual Studio 2015\reactJsPractise\obj\Debug\reactJsPractise.pdb
